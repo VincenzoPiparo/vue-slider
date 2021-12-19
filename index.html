@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue-Slider</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+<body>
+    <div id="root">
+        <!-- MY CONTAINER -->
+        <div class="container_app">
+            <div @mouseenter="stopAutoNextSlide" @mouseleave="autoNextSlide" class="slider">
+                <div class="img_container">
+                    <!-- SINGLE IMG -->
+                <div class="single_img">
+                        <img :src="slides[slideActive].image" :alt="slides[slideActive].title">
+                        <div class="single_text_img">
+                            <h3>{{slides[slideActive].title}}</h3>
+                            <p>{{slides[slideActive].text}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- THUMBS SECTION -->
+                <div class="thumbs">
+                    <div class="img_thumbs">
+                        <div @click="changeActiveSlide(index)" class="single_thumbs_img" :class="{activegrey: slideActive === index}" v-for="element, index in slides">
+                            <img :src="element.image" :alt="element.title">
+                        </div>
+                    </div>
+                    <!-- SECTION ARROW -->
+                    <div @click="backwardSlide" class="arrow top">
+                        <a href="#">
+                            <i class="fas fa-arrow-circle-up"></i>
+                        </a>
+                    </div>
+                    <div class="arrow dwn">
+                        <a @click="forwardSlide" href="#">
+                            <i class="fas fa-arrow-circle-down"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
